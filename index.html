@@ -5,34 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Trivia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 </head>
 <body>
-    <div id="start">
-        <h1>Trivia</h1>
-        <h4>Instructions</h4>
+  
+    <div class="startPage">
+        <h1 id="startHeader">National Parks Trivia</h1>
+        <h3 id="instructions">Instructions</h3>
         <ul>
-            <li>Once the game begins, you will be presented with 10 multiple choice questions one at a time.</li>
-            <li>Select and answer by clicking on the box.</li>
-            <li>You will have 30sec to answer before time expires.</li>
+            <li>10 multiple choice questions will be asked one at a time.</li>
+            <li>Answer the question by clicking on the correct option.</li>
+            <li>You will have 30 seconds to answer each question.</li>
+            <li>If the time runs out, the question will be counted as wrong.</li>
+            <li>Good luck!</li>
         </ul>
-        <h1 id="begin">Begin</h1>
+        <h2 id="beginBtn">Begin</h2>
     </div>
-    <div id="quizBox" style="display: none;">
-        <div id="question"><p></p></div>
-        <div id="innerQBox">
-            <div id="choices">
-                <div class="choice" id="A"></div>
-                <div class="choice" id="A"></div>
-                <div class="choice" id="A"></div>
-            </div>
-            <div id="resultPage" style="display: none;">
-                <div id="result"></div>
-            </div>
+    <div class="quizPage">
+        <div id="question"> <p></p> </div>
+        <div id="choices">
+            <div class="choice" id="A" onclick="check('A')"></div>
+            <div class="choice" id="B" onclick="check('B')"></div>
+            <div class="choice" id="C" onclick="check('C')"></div>
         </div>
+        <h2 id="timer">30</h2>
+    </div>
+    <div class="resultPage">
+        <p id="result"></p>
+        <p id="correctAnswer">The correct answer is: <span id="showAnswer"></span></p>
+        <p id="score">Score: <span id="scoreText"></span></p>
+        <h2 id="tryAgain">Try Again</h2>
     </div>
 
-    
+    <script type="text/javascript" src="assets/javascript/app.js"></script> 
+
 </body>
 </html>
