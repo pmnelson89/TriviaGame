@@ -68,23 +68,28 @@ ul {
     text-align: center;
 }
 
-#question {
+#question, #result, #scoreText.p {
     font-size: 20px;
     color: white;
 }
 
-#beginBtn, #A, #B, #C {
+#beginBtn, #A, #B, #C, #tryAgain {
     cursor: pointer;
 }
 
 #beginBtn:hover, 
 #A:hover,
 #B:hover,
-#C:hover {
+#C:hover, 
+#tryAgain:hover {
     color: white;
 }
 
 #timer {
     text-align: center;
-    max-width;
+}
+
+#score {
+    color: darkgoldenrod;
+    font-weight: bold;
 }

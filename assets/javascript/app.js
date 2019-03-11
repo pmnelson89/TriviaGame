@@ -7,6 +7,7 @@ $("#tryAgain").hide();
 var qNum = 0;
 var right = 0;
 var wrong = 0;
+var q;
 
 //create array of question objects and a variable for the current question being asked
 var questions = [
@@ -75,7 +76,9 @@ var currentQuestion = 0;
 
 //function to diplay the current question in HTML
 function showQuestion(){
-    var q = questions[currentQuestion];
+    $(".quizPage").show();
+    $(".resultPage").hide();
+    q = questions[currentQuestion];
     $("#question").html("<p>" + q.quest + "</p>");
     $("#A").html(q.choiceA);
     $("#B").html(q.choiceB);
@@ -84,46 +87,58 @@ function showQuestion(){
     run();
 }
 
+//pulls up the quiz page and begins calling questions
+function start(){
+    currentQuestion = 0;
+    $(".startPage").hide(); 
+    $(".quizPage").show(); 
+    showQuestion(); 
+}
+
+//function to determin if a question, or the end game screen appears
+function nextQ(){
+    if(currentQuestion < questions.length-1){ 
+        currentQuestion++;
+        showQuestion();
+    }else{
+        endGame(); 
+    }
+}
+
 //show the question page when the 'begin' button is clicked
 $("#beginBtn").click(start);
 
-//pulls up the quiz page and begins calling questions
-function start(){
-    $(".startPage").hide(); //hide the start page
-    $(".quizPage").show(); //show the quiz page
-    curentQuestion = 0;
-    showQuestion(); //display the questions
-}
-
 //variables for the timer
-var number = 30; //countdown timer
-var intervalID; //countdown interval
+var number = 30; 
+var intervalID; 
 
 //run the timer function
 function run(){
 clearInterval(intervalID);
 intervalID = setInterval(decrement, 1000); //count down by 1 sec
+$("#timer").html("<h2>" + number + "</h2>");
+
 }
+
 
 //makes the timer number decrease each decrement
 function decrement(){
-    number--;
     $("#timer").html("<h2>" + number + "</h2>");
+    number--;
     if (number > 10){
-        $("#timer").css("color", "darkgoldenrod"); //sets background color to clear
+        $("#timer").css("color", "white"); 
     } else if (number <= 10 && number > 5){
-        $("#timer").css("color", "yellow"); //changes the color to yellow when 10 sec left
+        $("#timer").css("color", "yellow"); 
     } else if (number <= 5 && number > 0){
-        $("#timer").css("color", "red"); //changes the color to red when 5sec left
-    } else if (number === 0){ //stops the counter and scores the question as wrong
+        $("#timer").css("color", "red"); 
+    } else if (number === 0){ 
         stop();
         wrong++;
         qNum++;
-        $("#result").text("Time's Up!"); //alerts that time is up
-        $("#correctAnswer").text("The correct answer is: "); //shows the correct answer
-        $("#scoreText").text(right + "/" + qNum); //shows the current score
-        results(); //displays the results page
-        nextQ();
+        $("#result").text("Time's Up!"); 
+        $("#correctAnswer").text("The correct answer is: " + q["choice" + q.correct]); 
+        $("#scoreText").text(right + "/" + qNum); 
+        results(); 
     }
 }
 
@@ -134,56 +149,50 @@ function stop(){
 
 //function to check the user answer agains the correct answer
 function check(answer){
-    if(answer == questions[currentQuestion].correct){ //if the user clicks the correct answer
+    if(answer == questions[currentQuestion].correct){ 
         right++; 
         qNum++;
-        $("#result").text("That is correct!"); //alerts correct
-        $("#scoreText").text(right + "/" + qNum); //shows the score
+        $("#result").text("That is correct!"); 
+        $("#result").css("color", "greenyellow");
+        $("#scoreText").text(right + "/" + qNum);
+        $("#scoreText").css("color", "white"); 
         console.log("right: " + right); 
-        results(); //displays the result page
-        nextQ();
+        results(); 
     }else{
         wrong++;
         qNum++;
-        $("#result").text("That is incorrect"); //alerts incorect
-        $("#correctAnswer").text("The correct answer is: " + answer) //shows the correct answer
-        $("#scoreText").text(right + "/" + qNum); //shows the score
+        $("#result").text("That is incorrect"); 
+        $("#result").css("color", "red");
+        $("#correctAnswer").text("The correct answer is: " + q["choice"+q.correct]); 
+        $("#scoreText").text(right + "/" + qNum);
         console.log("wrong: " + wrong);
-        results(); //displays the result page
-        nextQ();
+        results(); 
     }
 }
 
 //function to display the results screen
 function results(){
-    $(".quizPage").hide(); //hide the quiz page
-    $(".resultPage").show(); //display the result page
-    $(".resultPage").hide(5000);
-    $(".quizPage").show(5000);
+    $(".quizPage").hide(); 
+    $(".resultPage").show(); 
+    setTimeout(function(){ 
+        nextQ();
+      }, 1000);
 }
 
 //function to display the end game screen
 function endGame(){
-    //$(".quizPage").hide(); //hide the quiz page
-    $(".resultPage").show(); //display the result page
-    $("#result").text("Game Over"); //
+    stop();
+    $(".resultPage").show(); 
+    $("#result").text("Game Over");
+    $("#result").css("color", "red");
     $("#scoreText").text(right + "/" + qNum);
     $("#tryAgain").show();
-    stop();
 }
 
 //click event to restart the game
 $("#tryAgain").click(start);
 
-//function to bring up the next question
-function nextQ(){
-    if(currentQuestion < questions.length-1){ //continues the game if there are questions left
-        currentQuestion++;
-        showQuestion();
-    }else{
-        endGame(); //ends the game if there are no questions left
-    }
-}
+
 
 
 
