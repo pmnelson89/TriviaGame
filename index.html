@@ -9,31 +9,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 </head>
 <body>
-  
-    <div class="startPage">
-        <h1 id="startHeader">National Parks Trivia</h1>
-        <h3 id="instructions">Instructions</h3>
-        <ul>
-            <li>10 multiple choice questions will be asked one at a time.</li>
-            <li>Answer the question by clicking on the correct option.</li>
-            <li>You will have 30 seconds to answer each question.</li>
-            <li>If the time runs out, the question will be counted as wrong.</li>
-            <li>Good luck!</li>
-        </ul>
-        <h2 id="beginBtn">Begin</h2>
+    <header id="header">National Parks Trivia</header>
+    <div class=startPage>
+        <div class="info">
+            <h3 id="instructions">Instructions</h3>
+            <ul>
+                <li>10 multiple choice questions will be asked one at a time.</li>
+                <br>
+                <li>Answer the question by clicking on the correct option.</li>
+                <br>
+                <li>You will have 30 seconds to answer each question.</li>
+                <br>
+                <li>If the time runs out, the question will be counted as wrong.</li>
+                <br>
+                <li>Good luck!</li>
+            </ul>
+        </div>
+        <div class="begin">
+            <h2 id="beginBtn">Begin</h2>
+        </div>
     </div>
     <div class="quizPage">
         <div id="question"> <p></p> </div>
         <div id="choices">
             <div class="choice" id="A" onclick="check('A')"></div>
+            <br>
             <div class="choice" id="B" onclick="check('B')"></div>
+            <br>
             <div class="choice" id="C" onclick="check('C')"></div>
         </div>
         <h2 id="timer">30</h2>
     </div>
     <div class="resultPage">
         <p id="result"></p>
-        <p id="correctAnswer">The correct answer is: <span id="showAnswer"></span></p>
+        <p id="correctAnswer"></p>
         <p id="score">Score: <span id="scoreText"></span></p>
         <h2 id="tryAgain">Try Again</h2>
     </div>

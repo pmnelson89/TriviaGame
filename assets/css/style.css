@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    max-width: 960px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: left;
+    margin: 0 auto;
+    color: goldenrod;
+    text-shadow: -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    background: url("../images/NPS1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 100%;
+}
+
+header {
+    font-size: 45px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.info, .quizPage, .resultPage {
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 100px;
+    max-width: 45%;
+    background-color: darkgreen;
+    background-position: center;
+    background-size: 80% 100%;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply; 
+    padding: 20px;
+    opacity: .7; 
+}
+
+#instructions {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+}
+
+ul {
+    margin-left: 0px;
+    padding-left: 5px;
+    list-style-type: none;
+    line-height: normal;
+    color: white;
+} 
+
+.begin {
+    font-size: 30px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    max-width: 45%;
+    text-align: center;
+}
+
+#question {
+    font-size: 20px;
+    color: white;
+}
+
+#beginBtn, #A, #B, #C {
+    cursor: pointer;
+}
+
+#beginBtn:hover, 
+#A:hover,
+#B:hover,
+#C:hover {
+    color: white;
+}
+
+#timer {
+    text-align: center;
+    max-width;
+}
