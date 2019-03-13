@@ -68,7 +68,7 @@ ul {
     text-align: center;
 }
 
-#question, #result, #scoreText.p {
+#question, #result, #scoreText.p, #timer {
     font-size: 20px;
     color: white;
 }

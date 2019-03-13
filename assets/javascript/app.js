@@ -94,8 +94,9 @@ function run(){
 
 //makes the timer number decrease each decrement
 function decrement(){
-    number--;
+    
     $("#timer").html("<h2>" + number + "</h2>");
+    number--;
     if (number > 10){
         $("#timer").css("color", "white"); 
     } else if (number <= 10 && number > 5){
@@ -134,6 +135,8 @@ function start(){
 
 //function to diplay the current question in HTML
 function showQuestion(){
+    $("#timer").html("<h2>" + number + "</h2>");
+    number = 30;
     $(".quizPage").show();
     $(".resultPage").hide();
     q = questions[currentQuestion];
@@ -141,7 +144,6 @@ function showQuestion(){
     $("#A").html(q.choiceA);
     $("#B").html(q.choiceB);
     $("#C").html(q.choiceC);
-    number = 30;
     run();
 }
 
