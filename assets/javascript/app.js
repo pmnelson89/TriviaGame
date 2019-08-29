@@ -150,9 +150,9 @@ function showQuestion(){
 //function to check the user answer against the correct answer
 function check(answer){
     stop();
+    qNum++;
     if(answer == questions[currentQuestion].correct){ 
         right++; 
-        qNum++;
         $("#result").text("That is correct!"); 
         $("#result").css("color", "greenyellow");
         $("#scoreText").text(right + "/" + qNum);
@@ -162,10 +162,9 @@ function check(answer){
         results(); 
     }else{
         wrong++;
-        qNum++;
         $("#result").text("That is incorrect"); 
         $("#result").css("color", "red");
-        $("#correctAnswer").text("The correct answer is: " + q["choice"+ q.correct]);
+        $("#correctText").text(q["choice"+ q.correct]);
         $("#correctAnswer").show(); 
         $("#scoreText").text(right + "/" + qNum);
         console.log("wrong: " + wrong);
@@ -197,7 +196,7 @@ function results(){
 function endGame(){
     stop();
     $(".resultPage").show(); 
-    $("#result").text("Game Over");
+    $("#result").html("<h2>Game Over</h2>");
     $("#result").css("color", "red");
     $("#scoreText").text(right + "/" + qNum);
     $("#tryAgain").show();
